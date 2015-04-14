@@ -13,7 +13,7 @@ module.exports = transformTools.makeRequireTransform('require-globify', {
       var cwd = path.dirname(opts.file),
         globPattern = args[0],
         files = glob.sync(globPattern, {
-          cwd: cwd
+          cwd: optsObj.cwd === "cwd" ? process.env() : cwd
         });
       if (files.length !== 0 && files.length > 0) {
         var modules = [];
